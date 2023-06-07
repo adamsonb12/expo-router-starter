@@ -10,7 +10,6 @@ import { LocalizationProvider } from "../providers/localization";
 
 export default function Root() {
   // TODO
-  // Apollo & graphql mocked out
   // Auth mocked out with routes and redirections
   // @common components setup with some example content on each screen (just typography)
 
