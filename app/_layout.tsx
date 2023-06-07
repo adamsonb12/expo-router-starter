@@ -3,6 +3,10 @@ import { ThemeProvider } from "styled-components/native";
 
 import { theme } from "../providers/theme";
 import { useFonts } from "expo-font";
+import { ApolloProvider } from "../providers/apollo";
+import { AuthProvider } from "../providers/auth";
+import { UserRedirects } from "../providers/user-redirects";
+import { LocalizationProvider } from "../providers/localization";
 
 export default function Root() {
   // TODO
@@ -36,9 +40,16 @@ export default function Root() {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Slot />
-      </ThemeProvider>
+      <LocalizationProvider>
+        <AuthProvider>
+          <ApolloProvider>
+            <ThemeProvider theme={theme}>
+              <UserRedirects />
+              <Slot />
+            </ThemeProvider>
+          </ApolloProvider>
+        </AuthProvider>
+      </LocalizationProvider>
     </>
   );
 }
