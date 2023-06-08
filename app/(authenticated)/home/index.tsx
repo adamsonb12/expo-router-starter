@@ -1,4 +1,6 @@
-import { Text, TouchableOpacity } from "react-native";
+import { DangerButton } from "../../../components/@common/buttons/danger";
+import { FullScreenContentWithSafePadding } from "../../../components/@common/layout";
+import { Text } from "../../../components/@common/typography/text";
 import { useAuthContext } from "../../../providers/auth";
 
 export default function HomeSceen() {
@@ -6,16 +8,17 @@ export default function HomeSceen() {
 
   return (
     <>
-      <Text>Hello there you are logged in!</Text>
-      <TouchableOpacity
-        style={{
-          marginTop: 40,
-          backgroundColor: "crimson",
-        }}
-        onPress={() => signOut()}
-      >
-        <Text>Log me out!</Text>
-      </TouchableOpacity>
+      <FullScreenContentWithSafePadding>
+        <Text>Hello there you are logged in!</Text>
+        <DangerButton
+          style={{
+            marginTop: 40,
+          }}
+          onPress={() => signOut()}
+        >
+          Log me out!
+        </DangerButton>
+      </FullScreenContentWithSafePadding>
     </>
   );
 }

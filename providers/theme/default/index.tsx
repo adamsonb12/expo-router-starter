@@ -8,7 +8,7 @@ export const defaultThemeColors: ThemeColors = {
   warning: "#FFCB21",
   background: "#FFF",
   text: "#17213B",
-  textLight: "#F2F7FB",
+  textLight: "#FFF",
   disabled: "#D7E3F5",
   neutral: "#7C94C4",
   placeholder: "#7C94C4",
@@ -19,13 +19,20 @@ export const defaultThemeColors: ThemeColors = {
 };
 
 export const defaultThemeFonts: ThemeFonts = {
-  regular: "regular",
-  italic: "italic",
   bold: "bold",
   boldItalic: "boldItalic",
+  extraBold: "extraBold",
+  extraBoldItalic: "extraBoldItalic",
+  extraLight: "extraLight",
+  extraLightItalic: "extraLightItalic",
+  italic: "italic",
   light: "light",
   lightItalic: "lightItalic",
   medium: "medium",
   mediumItalic: "mediumItalic",
-  black: "black",
+  regular: "regular",
+  semiBold: "semiBold",
+  semiBoldItalic: "semiBoldItalic",
+  thin: "thin",
+  thinItalic: "thinItalic",
 };

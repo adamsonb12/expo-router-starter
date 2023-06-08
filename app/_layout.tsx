@@ -1,5 +1,6 @@
 import { Slot, SplashScreen } from "expo-router";
 import { ThemeProvider } from "styled-components/native";
+import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
 
 import { theme } from "../providers/theme";
 import { useFonts } from "expo-font";
@@ -42,8 +43,19 @@ export default function Root() {
         <AuthProvider>
           <ApolloProvider>
             <ThemeProvider theme={theme}>
-              <UserRedirects />
-              <Slot />
+              <PaperProvider
+                theme={{
+                  ...DefaultTheme,
+                  ...theme.colors,
+                  colors: {
+                    ...DefaultTheme.colors,
+                    ...theme.colors,
+                  },
+                }}
+              >
+                <UserRedirects />
+                <Slot />
+              </PaperProvider>
             </ThemeProvider>
           </ApolloProvider>
         </AuthProvider>
