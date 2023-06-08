@@ -3,7 +3,6 @@ import styled from "styled-components/native";
 import { useAuthContext } from "../../../providers/auth";
 import { FullScreenContentWithSafePadding } from "../../../components/@common/layout";
 import { TitleLarge } from "../../../components/@common/typography/title";
-import { Text } from "../../../components/@common/typography/text";
 import { PrimaryButton } from "../../../components/@common/buttons/primary";
 
 const StyledTitle = styled(TitleLarge)`
