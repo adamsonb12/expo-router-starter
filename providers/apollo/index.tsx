@@ -6,7 +6,6 @@ import {
 import { createHttpLink } from "apollo-link-http";
 import { ReactNode, useMemo } from "react";
 import { useAuthContext } from "../auth";
-import { SplashScreen } from "expo-router";
 
 const GRAPHQL_ENDPOINT = "your_graphql_endpoint";
 
@@ -42,7 +41,7 @@ export const ApolloProvider = ({ children }: { children: ReactNode }) => {
   }, [userAccessToken]);
 
   if (!client) {
-    return <SplashScreen />;
+    return null;
   }
 
   return <Provider client={client}>{children}</Provider>;

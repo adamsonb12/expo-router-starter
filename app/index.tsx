@@ -1,6 +1,8 @@
 import { SplashScreen, useRootNavigationState, useRouter } from "expo-router";
 import { useEffect } from "react";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function Main() {
   const router = useRouter();
   const navigationState = useRootNavigationState();
@@ -14,5 +16,5 @@ export default function Main() {
     router.replace("/welcome");
   }, [!navigationState?.key]);
 
-  return <SplashScreen />;
+  return null;
 }

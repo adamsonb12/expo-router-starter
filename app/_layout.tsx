@@ -8,6 +8,9 @@ import { ApolloProvider } from "../providers/apollo";
 import { AuthProvider } from "../providers/auth";
 import { UserRedirects } from "../providers/user-redirects";
 import { LocalizationProvider } from "../providers/localization";
+import { useEffect } from "react";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Root() {
   // TODO
@@ -33,33 +36,39 @@ export default function Root() {
     thinItalic: require("../assets/fonts/Montserrat-ThinItalic.ttf"),
   });
 
-  if (!fontsLoaded) {
-    return <SplashScreen />;
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (fontsLoaded) {
+    return (
+      <>
+        <LocalizationProvider>
+          <AuthProvider>
+            <ApolloProvider>
+              <ThemeProvider theme={theme}>
+                <PaperProvider
+                  theme={{
+                    ...DefaultTheme,
+                    ...theme.colors,
+                    colors: {
+                      ...DefaultTheme.colors,
+                      ...theme.colors,
+                    },
+                  }}
+                >
+                  <UserRedirects />
+                  <Slot />
+                </PaperProvider>
+              </ThemeProvider>
+            </ApolloProvider>
+          </AuthProvider>
+        </LocalizationProvider>
+      </>
+    );
   }
 
-  return (
-    <>
-      <LocalizationProvider>
-        <AuthProvider>
-          <ApolloProvider>
-            <ThemeProvider theme={theme}>
-              <PaperProvider
-                theme={{
-                  ...DefaultTheme,
-                  ...theme.colors,
-                  colors: {
-                    ...DefaultTheme.colors,
-                    ...theme.colors,
-                  },
-                }}
-              >
-                <UserRedirects />
-                <Slot />
-              </PaperProvider>
-            </ThemeProvider>
-          </ApolloProvider>
-        </AuthProvider>
-      </LocalizationProvider>
-    </>
-  );
+  return null;
 }
